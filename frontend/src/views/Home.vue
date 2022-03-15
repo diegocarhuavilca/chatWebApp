@@ -1,23 +1,25 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
-        <n-button type="warning">
-      Warning
-    </n-button>
+    <user-login class="user-login"/>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
- import { NButton } from 'naive-ui'
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import UserLogin from '@/components/User/UserLogin.vue'
 
 export default defineComponent({
   name: 'Home',
   components: {
-    HelloWorld,
-    NButton
+    UserLogin
   },
 });
 </script>
+
+<style lang="scss" scoped>
+.user-login{
+  display: flex;
+  flex-direction: column;
+  align-items: center ;
+}
+</style>
