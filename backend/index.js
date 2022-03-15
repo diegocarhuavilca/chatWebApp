@@ -1,12 +1,14 @@
 // Module dependecies
-
+require('dotenv').config()
 var express = require("express");
 var hash = require("pbkdf2-password")();
 var cors = require("cors")
 var session = require("express-session");
-const apiUrl = 'http://localhost:3000'
+const apiUrl = process.env.API_URL
 
 var app = (module.exports = express());
+
+require('./router')(app)
 
 //middleware
 app.use(cors())
