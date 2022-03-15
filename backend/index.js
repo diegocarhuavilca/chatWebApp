@@ -2,13 +2,14 @@
 
 var express = require("express");
 var hash = require("pbkdf2-password")();
-var path = require("path");
+var cors = require("cors")
 var session = require("express-session");
 const apiUrl = 'http://localhost:3000'
 
 var app = (module.exports = express());
 
 //middleware
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }));
 app.use(
@@ -61,7 +62,7 @@ app.post("/login", function (req, res, next) {
             self: `${apiUrl}/login`,
             error: 
                 {
-                    status: "404",
+                    status: 404,
                     title: "Invalid Attribut",
                     description: err
                 }
@@ -88,9 +89,9 @@ app.post("/login", function (req, res, next) {
                 status: "fail",
                 jsonapi: '/login',
                 self: `${apiUrl}/login`,
-                errors: 
+                error: 
                     {
-                        status: "401",
+                        status: 401,
                         title: "Invalid Attribut",
                         description: req.session.error
                     }
